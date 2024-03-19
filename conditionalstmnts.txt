@@ -1,7 +1,6 @@
 
 #!/bin/bash
-#
-#
+
 a=10
 b=20
 if [ $a -lt $b ]
@@ -34,8 +33,8 @@ then
 fi
 ******
 #!/bin/bash
-#
-#
+
+
 a=10
 b=20
 if [ $a -le $b ]
@@ -44,8 +43,8 @@ then
 fi
 ***********
 #!/bin/bash
-#
-#
+
+
 a=10
 b=10
 if [ $a -eq $b ]
@@ -54,8 +53,7 @@ then
 fi
 ********
 #!/bin/bash
-#
-#
+
 a=10
 b=50
 if [ $a -ne $b ]

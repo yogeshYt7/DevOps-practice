@@ -1,75 +1,108 @@
+Write a Script to print 1 to 10 numbers using for loops 
 
 #!/bin/bash
 
 for i in {1..10}
 do
-        echo "$i"
+        echo $i
 done
 
+**********************************************
+Write a Script to print 1 to 10 numbers using for loops and pause few seconds
 
 #!/bin/bash
 
 for i in {1..10}
 do
-        echo "$i"
-	sleep2
+        echo $i
+        sleep 2
 done
-
-
+**********************************************
+Write a Script to print 10 to 1 numbers using for loops and pause few seconds
 
 #!/bin/bash
 
-for i in {1..10..2}
+for i in {10..1}
 do
-        echo "$i"
+        echo $i
+        sleep 2
 done
-
-
+**********************************************
+Write a Script to print   even numbers using for loops and pause few seconds
 
 #!/bin/bash
 
 for i in {0..10..2}
 do
-        echo "$i"
+        echo $i
+        sleep 2
 done
 
-tables
+**********************************************
+Write a Script to print   odd numbers using for loops and pause few seconds
+
 #!/bin/bash
 
-num=10
+for i in {1..10..2}
+do
+        echo $i
+        sleep 2
+done
+**********************************************
+Write a Script to print tables
+#!/bin/bash
+
+num=12
 for i in {1..10}
 do
-        echo "$num * $i = $((num*i))"
+        echo "$num * $i =$((num*i))"
 done
-*******
-print files
+
+**********************************************
+Write a Script to fetch all files and directories in current directory
+
 #!/bin/bash
+
 
 for i in *
 do
-        echo $i
+        echo  $i
 done
 
+**********************************************
+Write a Script to fetch files with specific extension in current directory
 
 #!/bin/bash
+
 
 for i in *.html
 do
-        echo $i
+        echo  $i
 done
 
+**********************************************
+Write a Script to fetch all  files ETC dir
 
 #!/bin/bash
 
-for i in /etc/*.conf
+
+for i in /etc/*.config
 do
-        echo $i
+        echo  $i
 done
 
+**********************************************
+While loop
 
-whileloop
-infinite loop
+#!/bin/bash
 
+while [[]]
+do
+  	stmnts
+	stmnts
+done
+**********************************************
+ infinite loop
 #!/bin/bash
 
 init=4
@@ -77,7 +110,7 @@ while [[ $init -le 10 ]]
 do
         echo $init
 done
-
+	(or)
 #!/bin/bash
 
 init=4
@@ -86,6 +119,8 @@ do
         echo $init
 done
 
+**********************************************
+write a script to print 4 to 10 number using while loop
 #!/bin/bash
 
 init=4
@@ -95,23 +130,13 @@ do
 	((init++))
 done
 
+**********************************************
+write a script to print 10 to 1 number using while loop
 #!/bin/bash
 
-init=4
+init=10
 while [[ $init -ge 1 ]]
 do
         echo $init
 	((init--))
 done
-
-
-Real time scripts
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,123 @@
+Real time Scripts 
+
+To find file in current directory 
+
+#!/bin/bash
+
+if [ -f ./a.js ]
+then
+        echo "file exists"
+else
+        echo " file doesnt exists"
+fi
+
+*********************************************
+To find file in given path of directory 
+
+#!/bin/bash
+
+if [ -f ./devops/a.js ]
+then
+        echo "file exists"
+else
+        echo " file doesnt exists"
+fi
+*********************************************
+
+WAScript to check wheather the file exists or not ,if not create file
+
+#!/bin/bash
+
+if [ -f ./devops.txt ]
+then
+        echo "file exists"
+else
+        echo " file doesnt exists"
+        touch devops.txt
+        echo "file is created"
+fi
+*********************************************
+WAScript to check wheather the file exists or not ,if not create file(dynamic)
+
+#!/bin/bash
+
+read $file
+if [ -f ./$file ]
+then
+        echo "file exists"
+else
+        echo " file doesnt exists"
+        touch $file
+        echo "$file is created"
+fi
+**********************************************************
+To find directory whether is there or not
+
+#!/bin/bash
+
+if [ -d ./devops ]
+then
+        echo "Directory exists"
+else
+        echo " Directory doesnt exists"
+fi
+
+*********************************************
+To find directory whether is there or not if not created it
+#!/bin/bash
+
+if [ -d ./devops ]
+then
+        echo "Directory exists"
+else
+        echo " Directory doesnt exists"
+	mkdir devops
+	echo"directory is created"
+fi
+*********************************************
+To find directory whether is there or not if not created it(dynamic)
+
+#!/bin/bash
+
+read dir
+if [ -d ./$dir ]
+then
+        echo "Directory exists"
+else
+        echo " Directory doesnt exists"
+	mkdir $dir
+	echo "$dir is created "	
+fi
+*********************************************
+WA Script to check whether git is installed or not if not install it
+
+#!/bin/bash
+
+
+if command -v git
+then
+        echo"git is present or installed"
+        git --version
+else
+        echo "git is present or not installed"
+        sudo yum install git -y
+        echo "git installed"
+        git --version
+fi
+***********************************************
+WA Script to check whether git is installed or not if not install it(dynamic)
+
+#!/bin/bash
+
+read cmd
+if command -v $cmd
+then
+        echo"$cmd is present or installed"
+        $cmd --version
+else
+        echo "$cmd is present or not installed"
+        sudo yum install $cmd -y
+        echo "$cmd installed"
+        $cmd --version
+fi
+

@@ -1,0 +1,42 @@
+write script to compress the file in given directory(ZIP)
+
+#!/bin/bash
+
+for i in ./devop/*.js
+do
+        zip jsp.zip $i
+done
+******************************************************
+write script to compress the file in given directory(TAR)
+
+#!/bin/bash
+
+for i in ./devop/*.js
+do
+        tar -cvf demo.tar $i
+done
+******************************************************
+write a script  to fetch files from give directory and its count with particular extension of files in dynamic
+
+#!/bin/bash
+
+read extn
+count=0
+for i in ./devop/*.$extn
+do
+     echo $i
+     ((count++))
+done
+echo "count of .$extn files : $count"
+
+	(or)
+#!/bin/bash
+
+read extn
+count=0
+for i in ./devop/*$extn
+do
+     echo $i
+     ((count++))
+done
+echo "count of $extn files : $count"

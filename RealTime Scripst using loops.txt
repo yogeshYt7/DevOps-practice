@@ -1,0 +1,72 @@
+Write a script to print all files presnt in directory with particular extension
+#!/bin/bash
+
+for i in /etc/*.conf
+do
+        echo $i
+done
+************************************************
+Write a script to print all files presnt in directory with particular extension and its count
+#!/bin/bash
+
+count=0
+for i in /etc/*.conf
+do
+        echo $i
+	((count++))
+done
+	echo"count of files is : $count" 
+************************************************
+Write a script to copy in file from one directory to another
+#!/bin/bash
+
+for i in /etc/*.conf
+do
+        echo $i
+
+        cp $i ./DevOps/sample
+        echo "successfully copied"
+done
+************************************************
+Write a script to move in file from one directory to another
+#!/bin/bash
+
+for i in /devops/*.html
+do
+        echo $i
+	mv $i ./jsp
+        echo "successfully moved"
+done
+
+************************************************
+Write a script to Rename a file
+with braces 
+#!/bin/bash
+
+for i in /devops/*.html
+do
+	mv "$i"  "{$i}-changed"
+        echo "successfully renamed"
+done
+
+************************************************
+Write a script to Rename a file
+without braces 
+#!/bin/bash
+
+for i in /devops/*.html
+do
+	mv $i  $i-changed
+        echo "successfully renamed"
+done
+************************************************
+Write a script to Remove all files from directory
+
+#!/bin/bash
+
+for i in *
+do
+        rm -rf $i
+done
+
+************************************************
