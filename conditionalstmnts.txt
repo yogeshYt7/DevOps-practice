@@ -1,0 +1,83 @@
+
+#!/bin/bash
+#
+#
+a=10
+b=20
+if [ $a -lt $b ]
+then
+        echo "$a is greaterthan $b"
+else
+	 echo "$a is lessthan $b"
+
+fi
+
+**************
+#!/bin/bash
+#
+#
+a=10
+b=20
+if [ $b -gt $a ]
+then
+        echo "$b is greaterthan $a"
+fi
+*******************
+#!/bin/bash
+#
+#
+a=20
+b=10
+if [ $a -ge $b ]
+then
+        echo "$a is greaterthanequal $b"
+fi
+******
+#!/bin/bash
+#
+#
+a=10
+b=20
+if [ $a -le $b ]
+then
+        echo "$a is lessthanequal $b"
+fi
+***********
+#!/bin/bash
+#
+#
+a=10
+b=10
+if [ $a -eq $b ]
+then
+        echo "$a is equal to $b"
+fi
+********
+#!/bin/bash
+#
+#
+a=10
+b=50
+if [ $a -ne $b ]
+then
+        echo "$a is notequal to $b"
+fi
+
+
+
+
+#!/bin/bash
+
+a=10
+b=20
+if [ $a -eq $b ] 
+then
+    echo "$a is equal to $b"
+elif [ $a -lt $b ]
+then
+    echo "$a is less than $b"
+else
+    echo "$a is greater than $b"
+fi
+
+
