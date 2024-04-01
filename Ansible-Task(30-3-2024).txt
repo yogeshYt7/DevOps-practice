@@ -1,0 +1,45 @@
+                          ******************************************************************************
+Task :1
+Install httpd worker node
+
+--> ansible demo  -a "sudo yum install httpd -y"
+		(or)
+--> ansible demo -b -a "sudo yum install httpd -y"(shortcut without mention sudo permission)
+
+--> ansible demo -b -a "sudo which httpd"
+--> ansible demo -b -a "sudo systemctl start httpd"
+--> ansible demo -b -a "sudo systemctl status httpd"
+--> ansible demo -b -a "sudo yum remove httpd -y"
+
+                          ******************************************************************************
+
+TASK-2
+copy operations from master node to worker node by using Adhoc commmands
+$ ansible demo -b -a "touch sample.txt"
+$ ansible demo -b -a "cp sample.txt  /home/ansible/DevOps/"
+$ansible <group_name> -m copy -a "src=<source_file_path> dest=<destination_directory>"
+                          ******************************************************************************
+
+
+TASK-3
+move files from master node to worker node by using Adhoc commmands
+--> ansible demo -a "mv /home/ansible/devops/dev.txt /home/ansible/devops/"
+                          ******************************************************************************
+
+
+TASK-4
+Rename file from master node to worker node by using Adhoc commmands 
+--> ansible demo -a "mv /home/ansible/devops/dev.txt /home/ansible/devops/developer.txt"
+                          ******************************************************************************
+TASK-5
+Create a one shell script with installation of docker in the master copy this file into worker node then excute that file in worker node
+
+$ ansible demo -b -a "touch docker.sh" (with docker installstion in shell file)
+$ ansible demo -b -a "cp docker.sh  /home/ansible/DevOps/"
+$ ansible demo -b -a "sh docker.sh"
+or
+$ ansible <private- ip of particular worker node> -b -a "sh docker.sh"
+
+
+
+
