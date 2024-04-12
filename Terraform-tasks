@@ -1,0 +1,219 @@
+Task1: 
+Lanuch one instance with ami= amazonlinux2 instancetype =t2.micro
+mkdir directory_name
+vi provider.tf
+
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECERET_KEY"
+}
+
+vi main.tf
+
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = "1"
+
+  tags = {
+    Name = "instance_example"
+  }
+}
+                         OR
+vi main.tf
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECERET_KEY"
+}
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = "1"
+
+  tags = {
+    Name = "instance_example"
+  }
+}
+ **************************************************************************
+Task2:
+Lanuch Three(3) instance with ami= amazonlinux2 instancetype =t2.micro
+
+
+
+vi provider.tf
+
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECERET_KEY"
+}
+
+vi main.tf
+
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = "3"
+
+  tags = {
+    Name = "instance_example"
+  }
+}
+                         OR
+vi main.tf
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECERET_KEY"
+}
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = "3"
+
+  tags = {
+    Name = "instance_example"
+  }
+}
+***************************************************************************
+Task3: 
+Lanuch one instance with ami= amazonlinux2 instancetype =t2.microwith output of public-ip with userdate install httpd
+
+# provider.tf
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECRET_KEY"
+}
+
+# main.tf
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = 1
+
+  tags = {
+    Name = "check"
+  }
+  user_data       = file("sample.sh")
+}
+
+
+Task-4:
+lanuch one instance with ami= amazonlinux2 instancetype =t2.micro userdata install httpd and start service create security group allow all traffic write script in terraform
+
+$ mkdir a
+$ cd a
+
+vi provider.tf
+
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECERET_KEY"
+}
+
+vi main.tf
+
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = "1"
+
+  tags = {
+    Name = "check"
+  }
+
+  security_groups = [aws_security_group.example_sg.name]
+  user_data       = file("sample.sh")
+}
+
+
+vi output.tf
+
+output "public_ip" {
+  value = aws_instance.example[0].public_ip
+}
+
+
+vi sample.sh
+
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+
+
+
+************************(OR)*************************
+vi main.tf
+
+# provider.tf
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECRET_KEY"
+}
+
+# main.tf
+resource "aws_instance" "example" {
+  ami           = "ami-0451f2687182e0411"
+  instance_type = "t2.micro"
+  key_name      = "samplekeypair"
+  count         = 1
+
+  tags = {
+    Name = "check"
+  }
+
+  security_groups = [aws_security_group.example_sg.name]
+  user_data       = file("sample.sh")
+}
+
+resource "aws_security_group" "example_sg" {
+  name        = "example_sg"
+  description = "Allow all traffic"
+  
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# output.tf
+output "public_ip" {
+  value = aws_instance.example[0].public_ip
+}
+
+
+
+vi sample.sh
+
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+
+
