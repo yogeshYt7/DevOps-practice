@@ -1,0 +1,106 @@
+task 1: create one pod with one containers
+
+vi pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flipkart
+spec:
+  containers:
+    - name: login
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo hellooo; sleep 2; done"]
+*****************************************************************************************************************
+task 2: create one pod with 2 containers
+
+vi pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flipkart
+spec:
+  containers:
+    - name: login
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo login; sleep 2; done"]
+    - name: signup
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo signup; sleep 2; done"]
+*****************************************************************************************************************
+task 3: create one pod with one containers run webserver then check wheather running or not????
+
+vi pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yt
+spec:
+  containers:
+    - name: webapp
+      image: ubuntu
+      ports:
+        - containerPort: 80
+*****************************************************************************************************************
+task 4: create 2 pods  with labels excute label selectors
+
+
+vi amazon.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: amazon
+spec:
+  containers:
+    - name: login
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo login; sleep 2; done"]
+    - name: signup
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo signup; sleep 2; done"]
+$ kubectl apply -f amazon.yml
+
+vi flipkart.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flipkart
+  labels:
+    team: yt
+    department: devops
+spec:
+  containers:
+    - name: login
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo login; sleep 2; done"]
+    - name: signup
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo signup; sleep 2; done"]
+$ kubectl apply -f flipkart.yml
+
+
+vi myntra.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myntra
+spec:
+  containers:
+    - name: login
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo login; sleep 2; done"]
+    - name: signup
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo signup; sleep 2; done"]
+$ kubectl apply -f myntra.yml
+
+
+$ kubectl get pods
+$ kubectl label pod <podname> office=jsp
+$ kubectl get pods -l team=yt
+$ kubectl get pods -l team!=yt
+$ kubectl get pods -l department=devops
